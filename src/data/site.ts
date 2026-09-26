@@ -27,6 +27,7 @@ export const ROLES = ["Homeowner", "Builder", "Architect", "Other"] as const;
 export const nav = [
   { to: "/doors", label: "Doors" },
   { to: "/windows", label: "Windows" },
+  { to: "/gallery", label: "Gallery" },
   { to: "/heritage", label: "Heritage" },
   { to: "/workshop", label: "Workshop" },
 ] as const;
@@ -75,32 +76,32 @@ export const doorFeatures: Piece[] = [
   {
     name: "Entrance doors",
     quote: "Entrance door",
-    image: "/photos/entrance.jpg",
-    alt: "Solid timber entrance door with sidelights on a sandstone house",
+    image: "/gallery/009.jpg",
+    alt: "Four metre high multi-light entrance door in Western Red Cedar",
     blurb:
       "A front door to your brief — panels, glazing and hardware — so the house feels like yours from the street.",
   },
   {
     name: "Bifold doors",
     quote: "Bifold doors",
-    image: "/photos/bifold.jpg",
-    alt: "Timber bifold doors folded open to a garden",
+    image: "/gallery/005.jpg",
+    alt: "Four-door bifold in New Guinea Rosewood with a self-draining sill",
     blurb:
       "Top-running and bottom-running sets, including bifolds with integrated flyscreens for entertaining areas.",
   },
   {
     name: "French doors",
     quote: "French doors",
-    image: "/photos/french.jpg",
-    alt: "Pair of multi-lite timber French doors in a brick wall",
+    image: "/gallery/020.jpg",
+    alt: "French door unit in Western Red Cedar with a merbau sill",
     blurb:
       "Single-lite or multi-lite pairs, with sidelights when the opening needs more glass and less frame.",
   },
   {
     name: "Heritage doors",
     quote: "Heritage or Federation door",
-    image: "/photos/castle.jpg",
-    alt: "Cedar entrance with a smaller door set inside a larger one, against sandstone",
+    image: "/gallery/101.jpg",
+    alt: "Castle-style Western Red Cedar pivot door with a secret door and panel",
     blurb:
       "Federation, Hampton and one-off heritage doors, including unusual briefs such as a castle door with an everyday wicket door.",
   },
@@ -143,23 +144,23 @@ export const windowFeatures: Piece[] = [
   {
     name: "Casement windows",
     quote: "Timber windows",
-    image: "/photos/casement.jpg",
-    alt: "Timber casement windows with one sash ajar",
+    image: "/gallery/006.jpg",
+    alt: "Concealed casement window in spotted gum",
     blurb: "Side-hung sashes that seal properly and open the room to the garden.",
   },
   {
     name: "Federation & box-frame",
     quote: "Sash window repair",
-    image: "/photos/sash.jpg",
-    alt: "Cream painted double-hung sash windows on a weatherboard house",
+    image: "/gallery/049.jpg",
+    alt: "Multi-light Federation sash",
     blurb:
       "Double-hung box frames and Federation patterns, matched to what is already on the house.",
   },
   {
     name: "Made in the workshop",
     quote: "Timber windows",
-    image: "/photos/workshop.jpg",
-    alt: "Timber stacked in a joinery workshop with a door frame on the bench",
+    image: "/gallery/012.jpg",
+    alt: "Arched multi-light window in Western Red Cedar for Newport Surf Club",
     blurb: "Every frame is machined and assembled in Brookvale, with hardwood sills for the weather.",
   },
 ];

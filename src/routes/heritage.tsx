@@ -27,8 +27,8 @@ function HeritagePage() {
       />
       <section className="grid lg:grid-cols-2">
         <img
-          src="/photos/sash.jpg"
-          alt="Federation double-hung sash windows on a weatherboard house"
+          src="/gallery/013.jpg"
+          alt="Heritage bay window in Western Red Cedar with copper dressing"
           className="h-80 w-full object-cover lg:h-full"
         />
         <div className="px-5 py-12 lg:px-12">

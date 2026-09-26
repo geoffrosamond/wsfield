@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DoorsRouteImport } from './routes/doors'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as HeritageRouteImport } from './routes/heritage'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as WindowsRouteImport } from './routes/windows'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const DoorsRoute = DoorsRouteImport.update({
   id: '/doors',
   path: '/doors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HeritageRoute = HeritageRouteImport.update({
@@ -50,6 +56,7 @@ const WorkshopRoute = WorkshopRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/doors': typeof DoorsRoute
+  '/gallery': typeof GalleryRoute
   '/heritage': typeof HeritageRoute
   '/quote': typeof QuoteRoute
   '/windows': typeof WindowsRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/doors': typeof DoorsRoute
+  '/gallery': typeof GalleryRoute
   '/heritage': typeof HeritageRoute
   '/quote': typeof QuoteRoute
   '/windows': typeof WindowsRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/doors': typeof DoorsRoute
+  '/gallery': typeof GalleryRoute
   '/heritage': typeof HeritageRoute
   '/quote': typeof QuoteRoute
   '/windows': typeof WindowsRoute
@@ -74,13 +83,28 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/doors' | '/heritage' | '/quote' | '/windows' | '/workshop'
+  fullPaths:
+    | '/'
+    | '/doors'
+    | '/gallery'
+    | '/heritage'
+    | '/quote'
+    | '/windows'
+    | '/workshop'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/doors' | '/heritage' | '/quote' | '/windows' | '/workshop'
+  to:
+    | '/'
+    | '/doors'
+    | '/gallery'
+    | '/heritage'
+    | '/quote'
+    | '/windows'
+    | '/workshop'
   id:
     | '__root__'
     | '/'
     | '/doors'
+    | '/gallery'
     | '/heritage'
     | '/quote'
     | '/windows'
@@ -90,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DoorsRoute: typeof DoorsRoute
+  GalleryRoute: typeof GalleryRoute
   HeritageRoute: typeof HeritageRoute
   QuoteRoute: typeof QuoteRoute
   WindowsRoute: typeof WindowsRoute
@@ -110,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/doors'
       fullPath: '/doors'
       preLoaderRoute: typeof DoorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/heritage': {
@@ -146,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DoorsRoute: DoorsRoute,
+  GalleryRoute: GalleryRoute,
   HeritageRoute: HeritageRoute,
   QuoteRoute: QuoteRoute,
   WindowsRoute: WindowsRoute,

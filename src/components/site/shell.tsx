@@ -241,8 +241,7 @@ function Footer() {
       </div>
       <div className="border-t border-line">
         <p className="mx-auto max-w-6xl px-5 py-4 text-xs text-muted">
-          WS Field Joinery Pty Ltd · Brookvale · Est. 1977. Photographs illustrate the styles of
-          joinery we make. They are not photos of a specific client job.
+          WS Field Joinery Pty Ltd · Brookvale · Est. 1977. Gallery photos are jobs from the workshop.
         </p>
       </div>
     </footer>

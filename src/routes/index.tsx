@@ -13,6 +13,7 @@ import {
   testimonials,
   timbers,
 } from "@/data/site";
+import { gallery } from "@/data/gallery";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -53,8 +54,8 @@ function Home() {
         </div>
         <div className="relative min-h-72 lg:col-span-7">
           <img
-            src="/photos/entrance.jpg"
-            alt="Solid timber entrance door with sidelights on a sandstone Sydney house"
+            src="/gallery/013.jpg"
+            alt="Heritage bay window in Western Red Cedar with copper dressing"
             className="absolute inset-0 h-full w-full object-cover"
           />
         </div>
@@ -78,6 +79,32 @@ function Home() {
         </ul>
       </section>
 
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-xs tracking-widest uppercase text-cedar">From the workshop</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">Jobs we have already made.</h2>
+          </div>
+          <Link to="/gallery" className={buttonVariants()}>
+            See the gallery
+          </Link>
+        </div>
+        <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3">
+          {["013", "001", "009", "005", "101", "049"].map((id) => {
+            const shot = gallery.find((item) => item.src === `/gallery/${id}.jpg`);
+            if (!shot) return null;
+            return (
+              <li key={id}>
+                <Link to="/gallery" className="block">
+                  <img src={shot.src} alt={shot.title} className="aspect-video w-full object-cover" />
+                  <span className="mt-2 block text-sm text-muted">{shot.title}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
       <section className="mx-auto max-w-6xl px-5 py-16 md:py-20">
         <div className="max-w-2xl">
           <p className="text-xs tracking-widest uppercase text-cedar">Why people come back</p>
@@ -95,8 +122,8 @@ function Home() {
 
       <section className="grid lg:grid-cols-2">
         <img
-          src="/photos/castle.jpg"
-          alt="Cedar entrance with a smaller everyday door set into a larger ceremonial door"
+          src="/gallery/101.jpg"
+          alt="Castle-style Western Red Cedar pivot door with a secret door and panel"
           className="h-80 w-full object-cover lg:h-full"
         />
         <div className="flex flex-col justify-center bg-surface px-5 py-12 lg:px-12">
@@ -109,7 +136,7 @@ function Home() {
             including Federation profiles councils expect to see matched, not approximated.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link to="/quote" search={{ type: "Entrance door" }} className={buttonVariants()}>
+            <Link to="/quote" search={{ type: "Heritage or Federation door" }} className={buttonVariants()}>
               Get a quote
             </Link>
             <a href={PHONE_TEL} className={buttonVariants({ variant: "ghost" })}>
@@ -140,8 +167,8 @@ function Home() {
           </ol>
         </div>
         <img
-          src="/photos/joint.jpg"
-          alt="Close view of a tight mortise and tenon joint in pale timber"
+          src="/gallery/051.jpg"
+          alt="Weights and pulleys in a double-hung timber window"
           className="aspect-video w-full object-cover"
         />
       </section>
