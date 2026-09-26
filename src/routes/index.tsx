@@ -54,8 +54,8 @@ function Home() {
         </div>
         <div className="relative min-h-72 lg:col-span-7">
           <img
-            src="/gallery/013.jpg"
-            alt="Heritage bay window in Western Red Cedar with copper dressing"
+            src="/photos/entrance.jpg"
+            alt="Solid timber entrance door with sidelights on a sandstone Sydney house"
             className="absolute inset-0 h-full w-full object-cover"
           />
         </div>
@@ -122,8 +122,8 @@ function Home() {
 
       <section className="grid lg:grid-cols-2">
         <img
-          src="/gallery/101.jpg"
-          alt="Castle-style Western Red Cedar pivot door with a secret door and panel"
+          src="/photos/castle.jpg"
+          alt="Cedar entrance with a smaller everyday door set into a larger ceremonial door"
           className="h-80 w-full object-cover lg:h-full"
         />
         <div className="flex flex-col justify-center bg-surface px-5 py-12 lg:px-12">
@@ -136,7 +136,7 @@ function Home() {
             including Federation profiles councils expect to see matched, not approximated.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link to="/quote" search={{ type: "Heritage or Federation door" }} className={buttonVariants()}>
+            <Link to="/quote" search={{ type: "Entrance door" }} className={buttonVariants()}>
               Get a quote
             </Link>
             <a href={PHONE_TEL} className={buttonVariants({ variant: "ghost" })}>
@@ -167,8 +167,8 @@ function Home() {
           </ol>
         </div>
         <img
-          src="/gallery/051.jpg"
-          alt="Weights and pulleys in a double-hung timber window"
+          src="/photos/joint.jpg"
+          alt="Close view of a tight mortise and tenon joint in pale timber"
           className="aspect-video w-full object-cover"
         />
       </section>

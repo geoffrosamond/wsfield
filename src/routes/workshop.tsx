@@ -27,8 +27,8 @@ function WorkshopPage() {
       />
       <section className="grid lg:grid-cols-2">
         <img
-          src="/gallery/002.jpg"
-          alt="Medieval-style pivot door with a secret panel, in Western Red Cedar on the bench"
+          src="/photos/workshop.jpg"
+          alt="Timber racks and a door frame in progress inside the joinery workshop"
           className="h-80 w-full object-cover lg:h-full"
         />
         <div className="flex flex-col justify-center px-5 py-12 lg:px-12">
