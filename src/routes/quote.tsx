@@ -30,11 +30,11 @@ function QuotePage() {
           <p className="text-xs tracking-widest uppercase text-cedar">Get a quote</p>
           <h1 className="mt-3 text-4xl md:text-5xl">Tell us the opening. Then ring.</h1>
           <p className="mt-4 max-w-xl text-lg text-muted">
-            The workshop would rather talk than trade emails. Use this brief so the call starts in
-            the right place — door, window, repair, or “not sure yet”.
+            The workshop would rather talk than trade emails. Pick the closest standard arrangement,
+            then ring so the call starts on the opening, not from a blank page.
           </p>
           <div className="mt-8">
-            <QuoteForm initialProject={type} />
+            <QuoteForm initialProject={type} allowAllDesigns />
           </div>
         </div>
         <aside className="h-fit border border-fg bg-fg p-6 text-bg lg:sticky lg:top-24">

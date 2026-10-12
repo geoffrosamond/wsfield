@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import { DesignPicker, designLabel, designsFor } from "@/components/site/designs";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   HOURS,
@@ -21,6 +22,8 @@ export type Brief = {
   suburb: string;
   project: string;
   role: string;
+  design: string;
+  opening: string;
   message: string;
   createdAt: string;
 };
@@ -44,6 +47,8 @@ function briefText(brief: Brief) {
     brief.email ? `Email: ${brief.email}` : "",
     brief.suburb ? `Suburb: ${brief.suburb}` : "",
     `Project: ${brief.project}`,
+    brief.design ? `Arrangement: ${brief.design}` : "",
+    brief.opening ? `Opening: ${brief.opening}` : "",
     brief.role ? `I am a: ${brief.role}` : "",
     brief.message ? `Notes: ${brief.message}` : "",
   ]
@@ -51,7 +56,13 @@ function briefText(brief: Brief) {
     .join("\n");
 }
 
-export function QuoteForm({ initialProject }: { initialProject?: string }) {
+export function QuoteForm({
+  initialProject,
+  allowAllDesigns = false,
+}: {
+  initialProject?: string;
+  allowAllDesigns?: boolean;
+}) {
   const starting = (PROJECTS as readonly string[]).includes(initialProject ?? "")
     ? (initialProject as Project)
     : "Not sure yet";
@@ -61,6 +72,9 @@ export function QuoteForm({ initialProject }: { initialProject?: string }) {
   const [suburb, setSuburb] = useState("");
   const [project, setProject] = useState<string>(starting);
   const [role, setRole] = useState<string>("Homeowner");
+  const [design, setDesign] = useState<string | null>(null);
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
   const [saved, setSaved] = useState<Brief | null>(null);
@@ -77,6 +91,12 @@ export function QuoteForm({ initialProject }: { initialProject?: string }) {
     }
   }, [initialProject]);
 
+  useEffect(() => {
+    if (!design) return;
+    const allowed = designsFor(project, allowAllDesigns).some((item) => item.id === design);
+    if (!allowed) setDesign(null);
+  }, [project, design, allowAllDesigns]);
+
   const fieldClass =
     "mt-1 w-full min-h-11 border border-line bg-bg px-3 text-fg outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cedar";
 
@@ -91,6 +111,9 @@ export function QuoteForm({ initialProject }: { initialProject?: string }) {
     setErrors(next);
     if (next.name || next.phone) return;
 
+    const opening = [width.trim() && `${width.trim()} mm wide`, height.trim() && `${height.trim()} mm high`]
+      .filter(Boolean)
+      .join(" × ");
     const brief: Brief = {
       id: crypto.randomUUID(),
       name: name.trim(),
@@ -99,6 +122,8 @@ export function QuoteForm({ initialProject }: { initialProject?: string }) {
       suburb: suburb.trim(),
       project,
       role,
+      design: design ? designLabel(design) : "",
+      opening,
       message: message.trim(),
       createdAt: new Date().toISOString(),
     };
@@ -145,6 +170,9 @@ export function QuoteForm({ initialProject }: { initialProject?: string }) {
               setSaved(null);
               setName("");
               setPhone("");
+              setDesign(null);
+              setWidth("");
+              setHeight("");
               setMessage("");
             }}
           >
@@ -229,6 +257,29 @@ export function QuoteForm({ initialProject }: { initialProject?: string }) {
               <option key={item}>{item}</option>
             ))}
           </select>
+        </label>
+      </div>
+      <DesignPicker project={project} value={design} onChange={setDesign} allowAll={allowAllDesigns} />
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <label className="block text-sm">
+          Rough width <span className="text-muted">(mm, optional)</span>
+          <input
+            className={fieldClass}
+            name="width"
+            inputMode="numeric"
+            value={width}
+            onChange={(event) => setWidth(event.target.value)}
+          />
+        </label>
+        <label className="block text-sm">
+          Rough height <span className="text-muted">(mm, optional)</span>
+          <input
+            className={fieldClass}
+            name="height"
+            inputMode="numeric"
+            value={height}
+            onChange={(event) => setHeight(event.target.value)}
+          />
         </label>
       </div>
       <label className="mt-4 block text-sm">
